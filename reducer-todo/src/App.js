@@ -1,24 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useReducer, useState} from 'react';
+import Todo from './components/Todo';
+import TodoReducer from './reducers/reducers';
+import {initialState} from './reducers/reducers';
+import data from './data';
 import './App.css';
 
-function App() {
+
+const App = () => {
+  const [state, dispatch] = useReducer(TodoReducer, initialState);
+  const [newNote, setNewNote] = useState({});
+
+  const handleChanges = e => {
+    setNewNote(e.target.value);
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch({ type: "ADD_NOTE", payload: newNote });
+    setNewNote({todo: ''});
+}
+
+const handleClear = e => {
+  e.preventDefault();
+  dispatch({ type: "REMOVE", payload: newNote })
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input
+          type='text'
+          name='name'
+          onChange={handleChanges}
+          value={newNote.todo}
+        />
+        <button onClick={handleSubmit}>Add Note</button>
+        <button onClick={handleClear}>Clear</button>
+
+      </form>
+      <div className='list'>
+        {state.map(item => {
+            return <Todo key={state.id} item={item} dispatch={dispatch} state={state}/>;
+          })}
+      </div>
     </div>
   );
 }
