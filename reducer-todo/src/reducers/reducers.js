@@ -1,15 +1,4 @@
-export const initialState = [
-  {
-    todo: "Gym",
-    completed: false,
-    id: 1
-  },
-  {
-    todo: "Store",
-    completed: false,
-    id: 2
-  }
-];
+export const initialState = [];
 
 const TodoReducer = (state, action) => {
     switch (action.type) {
