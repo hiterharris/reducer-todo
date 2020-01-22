@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.todo {
+  border: 1px solid lightgrey;
+  width: 25%;
+  text-align: center;
+  margin: 2%;
+}
+
+form {
+  text-align: center;
+}
+
+.completed{
+  text-decoration: line-through;
+  color: green;
+}
