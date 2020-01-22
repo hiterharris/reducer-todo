@@ -2,9 +2,7 @@ import React, {useReducer, useState} from 'react';
 import Todo from './components/Todo';
 import TodoReducer from './reducers/reducers';
 import {initialState} from './reducers/reducers';
-import data from './data';
 import './App.css';
-
 
 const App = () => {
   const [state, dispatch] = useReducer(TodoReducer, initialState);
@@ -20,10 +18,10 @@ const App = () => {
     setNewNote({todo: ''});
 }
 
-const handleClear = e => {
-  e.preventDefault();
-  dispatch({ type: "REMOVE", payload: newNote })
-}
+  const handleClear = e => {
+    e.preventDefault();
+    dispatch({ type: "REMOVE", payload: newNote })
+  }
 
   return (
     <div className="App">
@@ -36,11 +34,10 @@ const handleClear = e => {
         />
         <button onClick={handleSubmit}>Add Note</button>
         <button onClick={handleClear}>Clear</button>
-
       </form>
       <div className='list'>
         {state.map(item => {
-            return <Todo key={state.id} item={item} dispatch={dispatch} state={state}/>;
+            return <Todo className='Todo' key={state.id} item={item} dispatch={dispatch} state={state}/>;
           })}
       </div>
     </div>

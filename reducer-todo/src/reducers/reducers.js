@@ -1,14 +1,14 @@
 export const initialState = [
   {
-  todo: "GYM",
-  completed: false,
-  id: 1
-},
-{
-  todo: "Store",
-  completed: false,
-  id: 2
-}
+    todo: "Gym",
+    completed: false,
+    id: 1
+  },
+  {
+    todo: "Store",
+    completed: false,
+    id: 2
+  }
 ];
 
 const TodoReducer = (state, action) => {
@@ -30,3 +30,4 @@ const TodoReducer = (state, action) => {
   }
 
   export default TodoReducer;
+  
